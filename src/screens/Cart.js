@@ -1,4 +1,5 @@
 import { StyleSheet, FlatList, Text, View } from "react-native";
+import { numberFormat } from "../services/numberFormat";
 
 export const Cart = ({ items, getTotalPrice }) => {
   return (
@@ -14,7 +15,7 @@ export const Cart = ({ items, getTotalPrice }) => {
             </View>
             <View>
               <Text style={styles.texto}>
-                R$ {item.product.price * item.qty}
+                {numberFormat(item.product.price * item.qty)}
               </Text>
             </View>
           </View>
@@ -22,7 +23,7 @@ export const Cart = ({ items, getTotalPrice }) => {
         ListFooterComponent={() => (
           <View style={styles.container2}>
             <Text style={styles.texto}>Total:</Text>
-            <Text style={styles.texto}>R$ {getTotalPrice()}</Text>
+            <Text style={styles.texto}>{numberFormat(getTotalPrice())}</Text>
           </View>
         )}
       />
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     borderTopColor: "gray",
     borderTopWidth: 2,
   },
-  
+
   texto: {
     fontSize: 20,
     fontWeight: "bold",
